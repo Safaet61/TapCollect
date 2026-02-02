@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-   [SerializeField] private float downSpeed;
-   [SerializeField] private float rotationSpeed;
+    [SerializeField] private float downSpeed;
+    [SerializeField] private float rotationSpeed;
+    [SerializeField] private int scorevalue = 10;
     private Rigidbody rb;
     void Start() 
     {
@@ -26,5 +27,10 @@ public class Obstacle : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+    private void OnMouseDown()
+    {
+        ScoreManager.instance.updateScore(scorevalue);
+        Destroy(gameObject);
     }
 }
