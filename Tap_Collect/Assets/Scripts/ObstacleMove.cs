@@ -6,7 +6,8 @@ public class Obstacle : MonoBehaviour
 {
     [SerializeField] private float downSpeed;
     [SerializeField] private float rotationSpeed;
-    [SerializeField] private int scorevalue = 10;
+    [SerializeField] private int scoreValue = 10;
+    [SerializeField] private int healthValue = 20;
     private Rigidbody rb;
     void Start() 
     {
@@ -25,12 +26,13 @@ public class Obstacle : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Detector"))
         {
+            HealthManager.instance.TakeDamage(healthValue);
             Destroy(gameObject);
         }
     }
     private void OnMouseDown()
     {
-        ScoreManager.instance.updateScore(scorevalue);
+        ScoreManager.instance.updateScore(scoreValue);
         Destroy(gameObject);
     }
 }
