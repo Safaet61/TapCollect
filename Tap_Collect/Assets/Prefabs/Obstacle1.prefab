@@ -148,3 +148,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   downSpeed: 5
   rotationSpeed: 150
+  scoreValue: 10
+  healthValue: 20
+  blustEffect: {fileID: 2300990382132178810, guid: b7bdfffba56971f4393529e1708ea00d, type: 3}

@@ -17,6 +17,7 @@ public class HealthManager : MonoBehaviour
         {
             instance = this;
             currentHealth = maxHealth;
+            healthText.text = "Health:" + currentHealth;
         }
         else
             Destroy(gameObject);

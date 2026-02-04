@@ -7,11 +7,13 @@ public class ObstacleSpawn : MonoBehaviour
     [SerializeField] private float spawnY = 8f;
     [SerializeField] private float minX = -2.2f;
     [SerializeField] private float maxX = 2.2f;
+    [SerializeField] private float delayTime = 1f;
+    [SerializeField] private float spawnStartTime = 1f;
 
     public List<GameObject> obstacles ;
     void Start()
     {
-        InvokeRepeating(nameof(spawn), 1f, 1f);
+        InvokeRepeating(nameof(spawn), delayTime, spawnStartTime);
     }
 
     void spawn()

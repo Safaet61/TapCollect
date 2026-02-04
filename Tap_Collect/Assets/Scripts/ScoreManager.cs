@@ -16,9 +16,13 @@ public class ScoreManager : MonoBehaviour
         else
             Destroy(gameObject);
     }
+    private void Start()
+    {
+        scoreText.text = "Score:" + score;
+    }
 
     // Update is called once per frame
-  public void updateScore(int value)
+    public void updateScore(int value)
     {
         score += value;
         scoreText.text = "Score: " + score;

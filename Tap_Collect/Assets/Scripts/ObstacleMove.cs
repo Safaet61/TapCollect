@@ -8,6 +8,7 @@ public class Obstacle : MonoBehaviour
     [SerializeField] private float rotationSpeed;
     [SerializeField] private int scoreValue = 10;
     [SerializeField] private int healthValue = 20;
+    [SerializeField] private ParticleSystem blustEffect;
     private Rigidbody rb;
     void Start() 
     {
@@ -33,6 +34,15 @@ public class Obstacle : MonoBehaviour
     private void OnMouseDown()
     {
         ScoreManager.instance.updateScore(scoreValue);
+        Blust();
+    }
+    void Blust()
+    {
+        if (blustEffect == null) return;
+
+        var blast = Instantiate(blustEffect, transform.position, Quaternion.identity);
+        blast.Play();
+        Destroy(blast.gameObject, 1f);
         Destroy(gameObject);
     }
 }
