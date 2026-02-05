@@ -33,6 +33,8 @@ public class Obstacle : MonoBehaviour
     }
     private void OnMouseDown()
     {
+        if (GameManager.instance.isGameOver)
+            return;
         ScoreManager.instance.updateScore(scoreValue);
         Blust();
     }

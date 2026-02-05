@@ -25,6 +25,15 @@ public class ScoreManager : MonoBehaviour
     public void updateScore(int value)
     {
         score += value;
+        ScoreUI();
+    }
+    void ScoreUI()
+    {
         scoreText.text = "Score: " + score;
+    }
+    public void ResetScore()
+    {
+        score = 0;
+        ScoreUI();
     }
 }

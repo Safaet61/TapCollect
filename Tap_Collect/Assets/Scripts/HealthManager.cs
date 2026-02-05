@@ -30,12 +30,21 @@ public class HealthManager : MonoBehaviour
         if (currentHealth < 0)
             currentHealth = 0;
 
-        healthText.text = "Health: " + currentHealth;
+        UpdateHealthUI();
 
         if (currentHealth == 0)
         {
+            GameManager.instance.GameOver();
             Debug.Log("Game Over");
         }
     }
-
+    void UpdateHealthUI()
+    {
+        healthText.text = "Health: " + currentHealth;
+    }
+    public void ResetHealth()
+    {
+        currentHealth = maxHealth;
+        UpdateHealthUI();
+    }
 }

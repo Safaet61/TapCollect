@@ -11,16 +11,23 @@ public class ObstacleSpawn : MonoBehaviour
     [SerializeField] private float spawnStartTime = 1f;
 
     public List<GameObject> obstacles ;
-    void Start()
-    {
-        InvokeRepeating(nameof(spawn), delayTime, spawnStartTime);
-    }
 
+    private void Start()
+    {
+        ReadyForSpawn();
+    }
     void spawn()
     {
+        if (GameManager.instance.isGameOver)
+            return;
         int randomIndex = Random.Range(0, obstacles.Count);
         float randomX = Random.Range(minX, maxX);
         Vector3 spawnPosition = new Vector3(randomX, spawnY, 0f);
         Instantiate(obstacles[randomIndex], spawnPosition,Quaternion.identity);
     }
+    public void ReadyForSpawn()
+    {
+        InvokeRepeating(nameof(spawn), delayTime, spawnStartTime);
+    }
+  
 }
