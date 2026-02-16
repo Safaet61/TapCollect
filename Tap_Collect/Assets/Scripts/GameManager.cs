@@ -7,11 +7,14 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
- 
+
+    public ObstacleSpawn obstacleSpawn; 
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private TextMeshProUGUI gameOverText;
     [SerializeField] private Button reStartButton;
     [SerializeField] public bool isGameOver;
+    [SerializeField] public GameObject GamePlayPanel;
+
     private void Awake()
     {
         if (instance == null)
@@ -44,7 +47,8 @@ public class GameManager : MonoBehaviour
         gameOverPanel.gameObject.SetActive(true);
         gameOverText.gameObject.SetActive(true);
         reStartButton.gameObject.SetActive(true);
-
+        obstacleSpawn.StopCoroutine();
+        ScoreManager.instance.scoreText.gameObject.SetActive(false);
     }
     public  void Restart()
     {
@@ -56,7 +60,18 @@ public class GameManager : MonoBehaviour
 
         ScoreManager.instance.ResetScore();
         HealthManager.instance.ResetHealth();
+        ShowGamePlayPanel();
 
     }
+    public void ShowGamePlayPanel()
+    {
+        GamePlayPanel.SetActive(true);
+        gameOverPanel.SetActive(false);
+    }
+    public void OffGamePlayPanel()
+    {
+        GamePlayPanel.SetActive(false);
+    }
+   
 }
 

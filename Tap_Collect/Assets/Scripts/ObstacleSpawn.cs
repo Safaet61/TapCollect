@@ -8,26 +8,41 @@ public class ObstacleSpawn : MonoBehaviour
     [SerializeField] private float minX = -2.2f;
     [SerializeField] private float maxX = 2.2f;
     [SerializeField] private float delayTime = 1f;
-    [SerializeField] private float spawnStartTime = 1f;
 
-    public List<GameObject> obstacles ;
 
-    private void Start()
+    public List<GameObject> obstacles;
+
+    public  void RunGame()
     {
-        ReadyForSpawn();
+
+        delayTime = DifficultManager.instance.currentDifficulty.spawnDelay;
+        StartCoroutine(ReadyForSpawn());
     }
-    void spawn()
+    public void StopCoroutine()
+    {
+        StopAllCoroutines();
+    }
+    void Spawn()
     {
         if (GameManager.instance.isGameOver)
             return;
         int randomIndex = Random.Range(0, obstacles.Count);
         float randomX = Random.Range(minX, maxX);
         Vector3 spawnPosition = new Vector3(randomX, spawnY, 0f);
-        Instantiate(obstacles[randomIndex], spawnPosition,Quaternion.identity);
+        Instantiate(obstacles[randomIndex], spawnPosition, Quaternion.identity);
     }
-    public void ReadyForSpawn()
+
+    IEnumerator ReadyForSpawn()
     {
-        InvokeRepeating(nameof(spawn), delayTime, spawnStartTime);
+        while (true)
+        {
+            if (!GameManager.instance.isGameOver)
+                Spawn();
+
+            yield return new WaitForSeconds(delayTime);
+        }
+
+
     }
-  
+   
 }
