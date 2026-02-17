@@ -18,7 +18,7 @@ public class ScoreManager : MonoBehaviour
     }
     private void Start()
     {
-        scoreText.text = "Score:" + score;
+        scoreText.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -33,6 +33,7 @@ public class ScoreManager : MonoBehaviour
     }
     public void ResetScore()
     {
+        scoreText.gameObject.SetActive(true) ;
         score = 0;
         ScoreUI();
     }
@@ -47,5 +48,9 @@ public class ScoreManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("HighScore", scoreH);
         }
+    }
+    public void HideScore()
+    {
+        scoreText.gameObject.SetActive(false);
     }
 }

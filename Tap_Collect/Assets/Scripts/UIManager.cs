@@ -17,14 +17,14 @@ public class UIManager : MonoBehaviour
     }
     
 
-    public void ShowGamePlayPanel()
-    {
-        GamePlayPanel.SetActive(true);
-    }
+//    public void ShowGamePlayPanel()
+//    {
+//        GamePlayPanel.SetActive(true);
+//    }
 
-    public void ShowGameOverPanel()
-    {
-        GamePlayPanel.SetActive(false);
-    }
+//    public void ShowGameOverPanel()
+//    {
+//        GamePlayPanel.SetActive(false);
+//    }
 
 }

@@ -16,13 +16,14 @@ public class HealthManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            currentHealth = maxHealth;
-            healthText.text = "Health:" + currentHealth;
         }
         else
             Destroy(gameObject);
     }
-
+    private void Start()
+    {
+        healthText.gameObject.SetActive(false);
+    }
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
@@ -44,7 +45,13 @@ public class HealthManager : MonoBehaviour
     }
     public void ResetHealth()
     {
+        healthText.gameObject.SetActive(true);
         currentHealth = maxHealth;
         UpdateHealthUI();
+    }
+  
+    public void HideHealth()
+    {
+        healthText.gameObject.SetActive(false);
     }
 }

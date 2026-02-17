@@ -24,21 +24,21 @@ public class DifficultManager : MonoBehaviour
     {
         currentDifficulty = easy;
         obstacleSpawn.RunGame();
-        GameManager.instance.OffGamePlayPanel();
-
+        GameManager.instance.ShowScoreHealth();
+        
     }
 
     public void SetMedium()
     {
         currentDifficulty = medium;
         obstacleSpawn.RunGame();
-        GameManager.instance.OffGamePlayPanel();
+        GameManager.instance.ShowScoreHealth();
     }
 
     public void SetHard()
     {
         currentDifficulty = hard;
         obstacleSpawn.RunGame(); 
-        GameManager.instance.OffGamePlayPanel();
+        GameManager.instance.ShowScoreHealth();
     }
 }

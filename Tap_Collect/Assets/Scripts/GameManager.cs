@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
         gameOverText.gameObject.SetActive(true);
         reStartButton.gameObject.SetActive(true);
         obstacleSpawn.StopCoroutine();
-        ScoreManager.instance.scoreText.gameObject.SetActive(false);
+        DisableScoreHralth();
     }
     public void Restart()
     {
@@ -58,12 +58,11 @@ public class GameManager : MonoBehaviour
         gameOverText.gameObject.SetActive(false);
         reStartButton.gameObject.SetActive(false);
 
-        ScoreManager.instance.ResetScore();
-        HealthManager.instance.ResetHealth();
+        //ScoreManager.instance.ResetScore();
+        //HealthManager.instance.ResetHealth();
         ShowGamePlayPanel();
 
     }
-
     public void ShowGamePlayPanel()
     {
         GamePlayPanel.SetActive(true);
@@ -73,6 +72,16 @@ public class GameManager : MonoBehaviour
     {
         GamePlayPanel.SetActive(false);
     }
-   
+    public void ShowScoreHealth()
+    {
+        OffGamePlayPanel();
+        HealthManager.instance.ResetHealth();
+        ScoreManager.instance.ResetScore();
+    }
+    public void DisableScoreHralth()
+    {
+        HealthManager.instance.HideHealth();
+        ScoreManager.instance.HideScore();
+    }
 }
 
