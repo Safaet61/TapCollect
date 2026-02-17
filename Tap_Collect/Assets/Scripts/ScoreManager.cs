@@ -7,6 +7,7 @@ public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
     [SerializeField] private int score = 0;
+    [SerializeField] private int highestScore;
 
     [SerializeField] public  TextMeshProUGUI scoreText;
     private void Awake()
@@ -19,6 +20,7 @@ public class ScoreManager : MonoBehaviour
     private void Start()
     {
         scoreText.gameObject.SetActive(false);
+        highestScore = PlayerPrefs.GetInt("HighestScore", 0);
     }
 
     // Update is called once per frame
@@ -37,20 +39,25 @@ public class ScoreManager : MonoBehaviour
         score = 0;
         ScoreUI();
     }
-    public void TotalScore( )
+    public int GetCurrentScore( )
     {
-        int totalScore;
+        return score;
     }
-    public void HighScore(int scoreH)
+    public int HighScore()
     {
-        PlayerPrefs.GetInt("HighScore", 0);
-        if (scoreH > score)
+        return highestScore;
+    }
+    public void CheckAndSaveHighScore()
+    {
+        if (score > highestScore)
         {
-            PlayerPrefs.SetInt("HighScore", scoreH);
+            highestScore = score;
         }
+        PlayerPrefs.SetInt("HighestScore", highestScore);
     }
     public void HideScore()
     {
         scoreText.gameObject.SetActive(false);
     }
+    
 }

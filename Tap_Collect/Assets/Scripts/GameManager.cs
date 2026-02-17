@@ -9,11 +9,14 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public ObstacleSpawn obstacleSpawn; 
-    [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private TextMeshProUGUI gameOverText;
     [SerializeField] private Button reStartButton;
     [SerializeField] public bool isGameOver;
     [SerializeField] public GameObject GamePlayPanel;
+    [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private TextMeshProUGUI highestScore;
+    [SerializeField] private TextMeshProUGUI currentScore;
+
 
     private void Awake()
     {
@@ -49,6 +52,8 @@ public class GameManager : MonoBehaviour
         reStartButton.gameObject.SetActive(true);
         obstacleSpawn.StopCoroutine();
         DisableScoreHralth();
+        SetCurrentScore();
+        SetHighestScore();
     }
     public void Restart()
     {
@@ -83,5 +88,20 @@ public class GameManager : MonoBehaviour
         HealthManager.instance.HideHealth();
         ScoreManager.instance.HideScore();
     }
+    public void SetCurrentScore()
+    {
+        int CurrentScore = ScoreManager.instance.GetCurrentScore();
+        currentScore.text = "Current Score \n       " + CurrentScore;
+
+    }
+    public void SetHighestScore()
+    {
+        ScoreManager.instance.CheckAndSaveHighScore();
+        int highScore = ScoreManager.instance.HighScore();
+        highestScore.text = "highest Score \n       " + highScore;
+        
+
+    }
+
 }
 

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Medium
   m_EditorClassIdentifier: 
   difficultyName: Medium
-  spawnDelay: 1
+  spawnDelay: 0.9
