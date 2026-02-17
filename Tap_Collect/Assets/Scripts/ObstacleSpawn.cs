@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class ObstacleSpawn : MonoBehaviour
 {
+    [SerializeField] private ObostaclePool obostaclePool;
     [SerializeField] private float spawnY = 8f;
     [SerializeField] private float minX = -2.2f;
     [SerializeField] private float maxX = 2.2f;
     [SerializeField] private float delayTime = 1f;
 
-
-    public List<GameObject> obstacles;
-
+ 
     public  void RunGame()
     {
 
@@ -26,10 +25,10 @@ public class ObstacleSpawn : MonoBehaviour
     {
         if (GameManager.instance.isGameOver)
             return;
-        int randomIndex = Random.Range(0, obstacles.Count);
+        GameObject obstacle = obostaclePool.GetObstacle();
+
         float randomX = Random.Range(minX, maxX);
-        Vector3 spawnPosition = new Vector3(randomX, spawnY, 0f);
-        Instantiate(obstacles[randomIndex], spawnPosition, Quaternion.identity);
+        obstacle.transform.position = new Vector3(randomX, spawnY, 0);
     }
 
     IEnumerator ReadyForSpawn()

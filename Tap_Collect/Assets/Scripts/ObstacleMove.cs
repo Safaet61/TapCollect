@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Obstacle : MonoBehaviour
+public class ObstacleMove : MonoBehaviour
 {
     [SerializeField] private float downSpeed;
     [SerializeField] private float rotationSpeed;
@@ -13,6 +13,7 @@ public class Obstacle : MonoBehaviour
     void Start() 
     {
         rb = GetComponent<Rigidbody>();
+ 
     }  
     void Update()
     {
@@ -28,9 +29,11 @@ public class Obstacle : MonoBehaviour
         if (other.gameObject.CompareTag("Detector"))
         {
             HealthManager.instance.TakeDamage(healthValue);
-            Destroy(gameObject);
+
+           ObostaclePool.instance .ReturnObstacle(gameObject);
         }
     }
+
     private void OnMouseDown()
     {
         if (GameManager.instance.isGameOver)
@@ -45,6 +48,6 @@ public class Obstacle : MonoBehaviour
         var blast = Instantiate(blustEffect, transform.position, Quaternion.identity);
         blast.Play();
         Destroy(blast.gameObject, 1f);
-        Destroy(gameObject);
+        ObostaclePool. instance.ReturnObstacle(gameObject);
     }
 }
