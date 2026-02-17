@@ -49,5 +49,6 @@ public class ObstacleMove : MonoBehaviour
         blast.Play();
         Destroy(blast.gameObject, 1f);
         ObostaclePool. instance.ReturnObstacle(gameObject);
+        AudioManager.instance.PlayExplosionSound();
     }
 }

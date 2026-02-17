@@ -15,37 +15,16 @@ public class UIManager : MonoBehaviour
         }
         else Destroy(gameObject);
     }
+    
 
     public void ShowGamePlayPanel()
     {
-
+        GamePlayPanel.SetActive(true);
     }
-    public void OffGamePlayPanel()
-    {
 
-    }
     public void ShowGameOverPanel()
     {
-
+        GamePlayPanel.SetActive(false);
     }
-    public void OffGameOverPanel()
-    {
 
-    }
-    public void ShowScore()
-    {
-
-    }
-    public void OffScore()
-    {
-
-    }
-    public void ShowHealth()
-    {
-
-    }
-    public void OffHealth()
-    {
-
-    }
 }

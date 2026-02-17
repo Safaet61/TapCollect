@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
         obstacleSpawn.StopCoroutine();
         ScoreManager.instance.scoreText.gameObject.SetActive(false);
     }
-    public  void Restart()
+    public void Restart()
     {
         isGameOver = false;
 
@@ -63,6 +63,7 @@ public class GameManager : MonoBehaviour
         ShowGamePlayPanel();
 
     }
+
     public void ShowGamePlayPanel()
     {
         GamePlayPanel.SetActive(true);

@@ -36,8 +36,16 @@ public class ScoreManager : MonoBehaviour
         score = 0;
         ScoreUI();
     }
-    public void HighScore()
+    public void TotalScore( )
     {
-
+        int totalScore;
+    }
+    public void HighScore(int scoreH)
+    {
+        PlayerPrefs.GetInt("HighScore", 0);
+        if (scoreH > score)
+        {
+            PlayerPrefs.SetInt("HighScore", scoreH);
+        }
     }
 }
