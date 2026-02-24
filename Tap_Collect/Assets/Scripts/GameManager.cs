@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public ObstacleSpawn obstacleSpawn; 
     [SerializeField] private TextMeshProUGUI gameOverText;
     [SerializeField] private Button reStartButton;
+    [SerializeField] private Button exitButton;
     [SerializeField] public bool isGameOver;
     [SerializeField] public GameObject GamePlayPanel;
     [SerializeField] private GameObject gameOverPanel;
@@ -39,8 +40,9 @@ public class GameManager : MonoBehaviour
         gameOverPanel.gameObject.SetActive(false);
         gameOverText.gameObject.SetActive(false);
         reStartButton.gameObject.SetActive(false);
+        exitButton.gameObject.SetActive(false);
     }
-    // Update is called once per frame
+ 
     public void GameOver()
     {
         if (isGameOver)
@@ -50,6 +52,8 @@ public class GameManager : MonoBehaviour
         gameOverPanel.gameObject.SetActive(true);
         gameOverText.gameObject.SetActive(true);
         reStartButton.gameObject.SetActive(true);
+        exitButton.gameObject.SetActive(true);
+        OffGamePlayPanel();
         obstacleSpawn.StopCoroutine();
         DisableScoreHralth();
         SetCurrentScore();
@@ -62,7 +66,7 @@ public class GameManager : MonoBehaviour
         gameOverPanel.gameObject.SetActive(false);
         gameOverText.gameObject.SetActive(false);
         reStartButton.gameObject.SetActive(false);
-
+        exitButton.gameObject.SetActive(false);
         //ScoreManager.instance.ResetScore();
         //HealthManager.instance.ResetHealth();
         ShowGamePlayPanel();
@@ -102,6 +106,9 @@ public class GameManager : MonoBehaviour
         
 
     }
-
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
 }
 

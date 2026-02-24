@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Tap_and_Collect.unity
+    guid: bcd5f9e0d0b45ec4d9792242b57318d6
   m_configObjects: {}
